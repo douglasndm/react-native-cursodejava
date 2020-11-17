@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import IVideo from '../../@types/video';
+
+import YouTubeAPI from '../../services/youtube';
 
 import VideoItem from '../VideoItem';
 
@@ -10,41 +13,40 @@ import {
     SeeAllVideosButtonText,
 } from './styles';
 
-const PlaylistVideos: React.FC = () => {
-    const items = [
-        {
-            id: 1,
-            title: 'Video 1',
-            description: 'apodksaopdas',
-        },
-        {
-            id: 2,
-            title: 'Video 2',
-            description: 'apodksaopdas',
-        },
-        {
-            id: 3,
-            title: 'Video 3',
-            description: 'apodksaopdas',
-        },
-        {
-            id: 4,
-            title: 'Video 4',
-            description: 'apodksaopdas',
-        },
-        {
-            id: 5,
-            title: 'Video 5',
-            description: 'apodksaopdas',
-        },
-    ];
+interface Props {
+    ChannelName: string;
+    PlaylistId: string;
+}
+
+const PlaylistVideos: React.FC<Props> = ({
+    ChannelName = '',
+    PlaylistId,
+}: Props) => {
+    const [videos, setVideos] = useState<Array<IVideo>>([]);
+
+    const getVideos = useCallback(async () => {
+        const response = await YouTubeAPI.get('/playlistItems', {
+            params: {
+                part: 'id,snippet',
+                playlistId: PlaylistId,
+                maxResults: 5,
+            },
+        });
+
+        setVideos(response.data.items);
+    }, [PlaylistId]);
+
+    useEffect(() => {
+        getVideos();
+    }, [getVideos]);
+
     return (
         <Container>
-            <YoutuberTitle>Gustavo Guanabara</YoutuberTitle>
+            <YoutuberTitle>{ChannelName}</YoutuberTitle>
             <List
-                data={items}
+                data={videos}
                 keyExtractor={(item, index) => String(index)}
-                renderItem={({ item }) => <VideoItem video={item} />}
+                renderItem={({ item: video }) => <VideoItem video={video} />}
                 horizontal
             />
 

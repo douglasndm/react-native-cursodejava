@@ -1,29 +1,18 @@
 import React from 'react';
+import IVideo from '../../@types/video';
 
-import Img from '../../Assets/Em6aT96VgAA6NqP.jpg';
-
-import {
-    Container,
-    Background,
-    TextContainer,
-    Title,
-    Description,
-} from './styles';
+import { Container, Background, TextContainer, Title } from './styles';
 
 interface Props {
-    video: {
-        title: string;
-        description: string;
-    };
+    video: IVideo;
 }
 
 const VideoItem: React.FC<Props> = ({ video }: Props) => {
     return (
         <Container>
-            <Background source={Img}>
+            <Background source={{ uri: video.snippet.thumbnails.default.url }}>
                 <TextContainer>
-                    <Title>{video.title}</Title>
-                    <Description>{video.description}</Description>
+                    <Title>{video.snippet.title}</Title>
                 </TextContainer>
             </Background>
         </Container>

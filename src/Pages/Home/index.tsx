@@ -8,7 +8,10 @@ const Home: React.FC = () => {
     return (
         <View>
             <Header />
-            <ListPlaylistVideos />
+            <ListPlaylistVideos
+                ChannelName="Curso em Vídeo"
+                PlaylistId="PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR"
+            />
         </View>
     );
 };

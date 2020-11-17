@@ -16,6 +16,7 @@ export const Background = styled.ImageBackground.attrs({
 export const TextContainer = styled.View`
     padding: 12px;
     background: #b8b8b8;
+    max-height: 95px;
     width: 225px;
     position: absolute;
     bottom: 0;
@@ -24,9 +25,5 @@ export const TextContainer = styled.View`
 export const Title = styled.Text`
     font-size: 16px;
     font-weight: bold;
-    color: #4f4f4f;
-`;
-
-export const Description = styled.Text`
     color: #4f4f4f;
 `;
