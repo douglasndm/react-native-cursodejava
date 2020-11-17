@@ -1,12 +1,12 @@
 import { useRoute } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
-import IVideo from '../../@types/video';
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 import Header from '../../Components/Header';
 import Loading from '../../Components/Loading';
 import { getVideo } from '../../Functions/videos';
 
-import { Container, VideoTitle, VideoDescription } from './styles';
+import { Container, Content, VideoTitle, VideoDescription } from './styles';
 
 interface Props {
     videoId: string;
@@ -24,7 +24,6 @@ const Player: React.FC = () => {
         const response = await getVideo({ videoId: routeParams.videoId });
 
         setVideo(response);
-        console.log(response);
 
         setIsLoading(false);
     }, [routeParams.videoId]);
@@ -41,11 +40,16 @@ const Player: React.FC = () => {
                 <Container>
                     <Header />
 
-                    <VideoTitle>{video?.snippet.title}</VideoTitle>
+                    {!!video && (
+                        <Content>
+                            <YoutubePlayer videoId={video.id} height={230} />
+                            <VideoTitle>{video.snippet.title}</VideoTitle>
 
-                    <VideoDescription>
-                        {video?.snippet.description}
-                    </VideoDescription>
+                            <VideoDescription>
+                                {video.snippet.description}
+                            </VideoDescription>
+                        </Content>
+                    )}
                 </Container>
             )}
         </>
