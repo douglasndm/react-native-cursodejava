@@ -1,18 +1,26 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import Header from '../../Components/Header';
-import ListPlaylistVideos from '../../Components/ListPlaylistVideos';
+import ListVideos from '../../Components/ListVideos';
+
+import { Container } from './styles';
 
 const Home: React.FC = () => {
     return (
-        <View>
+        <Container>
             <Header />
-            <ListPlaylistVideos
-                ChannelName="Curso em Vídeo"
-                PlaylistId="PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR"
+            <ListVideos
+                channelName="Curso em Vídeo"
+                playlistId="PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR"
             />
-        </View>
+
+            <ListVideos
+                channelName="Loiane Groner"
+                playlistId="PLGxZ4Rq3BOBq0KXHsp5J3PxyFaBIXVs3r"
+            />
+
+            <ListVideos channelName="Mais aulas" searchContent="aula de java" />
+        </Container>
     );
 };
 

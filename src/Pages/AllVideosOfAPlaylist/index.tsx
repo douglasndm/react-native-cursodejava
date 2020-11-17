@@ -3,7 +3,7 @@ import { useRoute } from '@react-navigation/native';
 
 import IVideo from '../../@types/video';
 
-import { getVideosFromAPlaylist } from '../../Functions/Playlist';
+import { getVideosFromAPlaylist } from '../../Functions/videos';
 
 import Header from '../../Components/Header';
 

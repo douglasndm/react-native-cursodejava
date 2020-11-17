@@ -10,7 +10,7 @@ interface Props {
 const VideoItem: React.FC<Props> = ({ video }: Props) => {
     return (
         <Container>
-            <Background source={{ uri: video.snippet.thumbnails.default.url }}>
+            <Background source={{ uri: video.snippet.thumbnails.medium.url }}>
                 <TextContainer>
                     <Title>{video.snippet.title}</Title>
                 </TextContainer>

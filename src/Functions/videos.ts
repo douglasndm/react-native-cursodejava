@@ -24,3 +24,27 @@ export async function getVideosFromAPlaylist({
         throw new Error(err);
     }
 }
+
+interface getVideosFromASearchProps {
+    query: string;
+    maxResults?: number;
+}
+
+export async function getVideosFromASearch({
+    query,
+    maxResults,
+}: getVideosFromASearchProps): Promise<Array<IVideo>> {
+    try {
+        const response = await YouTubeAPI.get('/search', {
+            params: {
+                part: 'id,snippet',
+                q: query,
+                maxResults,
+            },
+        });
+
+        return response.data.items;
+    } catch (err) {
+        throw new Error(err);
+    }
+}
