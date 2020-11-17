@@ -2,10 +2,14 @@ import React from 'react';
 
 import { Container, Title } from './styles';
 
-const Header: React.FC = () => {
+interface Props {
+    title?: string;
+}
+
+const Header: React.FC<Props> = ({ title }: Props) => {
     return (
         <Container>
-            <Title>Curso de Java</Title>
+            {title ? <Title>{title}</Title> : <Title>Curso de Java</Title>}
         </Container>
     );
 };

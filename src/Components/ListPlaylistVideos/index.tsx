@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+
 import IVideo from '../../@types/video';
 
-import YouTubeAPI from '../../services/youtube';
+import { getVideosFromAPlaylist } from '../../Functions/Playlist';
 
 import VideoItem from '../VideoItem';
 
@@ -22,23 +24,25 @@ const PlaylistVideos: React.FC<Props> = ({
     ChannelName = '',
     PlaylistId,
 }: Props) => {
+    const { navigate } = useNavigation();
     const [videos, setVideos] = useState<Array<IVideo>>([]);
 
     const getVideos = useCallback(async () => {
-        const response = await YouTubeAPI.get('/playlistItems', {
-            params: {
-                part: 'id,snippet',
-                playlistId: PlaylistId,
-                maxResults: 5,
-            },
+        const response = await getVideosFromAPlaylist({
+            playlistId: PlaylistId,
+            maxResults: 5,
         });
 
-        setVideos(response.data.items);
+        setVideos(response);
     }, [PlaylistId]);
 
     useEffect(() => {
         getVideos();
     }, [getVideos]);
+
+    const handleNavigateAllVideos = useCallback(() => {
+        navigate('AllVideosOfAPlaylist', { playlistId: PlaylistId });
+    }, [navigate, PlaylistId]);
 
     return (
         <Container>
@@ -50,7 +54,7 @@ const PlaylistVideos: React.FC<Props> = ({
                 horizontal
             />
 
-            <SeeAllVideosButton>
+            <SeeAllVideosButton onPress={handleNavigateAllVideos}>
                 <SeeAllVideosButtonText>
                     Ver todos as aulas
                 </SeeAllVideosButtonText>
