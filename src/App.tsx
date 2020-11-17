@@ -1,12 +1,17 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
-import './services/youtube';
+import Routes from './Routes';
 
-export default () => {
+const App: React.FC = () => {
     return (
-        <View>
-            <Text>The component is bellow</Text>
-        </View>
+        <NavigationContainer>
+            <StatusBar backgroundColor="#f7630c" />
+            <Routes />
+        </NavigationContainer>
     );
 };
+
+export default App;
