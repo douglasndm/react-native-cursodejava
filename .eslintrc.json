@@ -29,12 +29,21 @@
         "react-hooks"
     ],
     "rules": {
-        "prettier/prettier": "error",
-        "react-hooks/rules-of-hooks": "error",
+        "react/require-default-props": "off",
         "react/jsx-indent" : ["error", 4],
+        "prettier/prettier": "error",
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "react/jsx-one-expression-per-line": "off",
+        "global-require": "off",
+        "react-native/no-raw-text": "off",
+        "no-param-reassign": "off",
+        "no-underscore-dangle": "off",
+        "camelcase": "off",
+        "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
         "import/prefer-default-export": "off",
+
         "import/extensions": [
             "error",
             "ignorePackages",
