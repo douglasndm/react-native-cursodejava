@@ -8,13 +8,11 @@ import {
     getVideosFromASearch,
 } from '../../Functions/videos';
 
+import Loading from '../Loading';
 import VideoItem from '../VideoItem';
 
 import {
     Container,
-    LoadingContainer,
-    LoadingComponent,
-    LoadingText,
     YoutuberTitle,
     List,
     SeeAllVideosButton,
@@ -71,10 +69,7 @@ const ListVideos: React.FC<Props> = ({
     return (
         <Container>
             {loading ? (
-                <LoadingContainer>
-                    <LoadingComponent />
-                    <LoadingText>Carregando aulas</LoadingText>
-                </LoadingContainer>
+                <Loading />
             ) : (
                 <>
                     <YoutuberTitle>{channelName}</YoutuberTitle>

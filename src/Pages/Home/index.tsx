@@ -18,8 +18,6 @@ const Home: React.FC = () => {
                 channelName="Loiane Groner"
                 playlistId="PLGxZ4Rq3BOBq0KXHsp5J3PxyFaBIXVs3r"
             />
-
-            <ListVideos channelName="Mais aulas" searchContent="aula de java" />
         </Container>
     );
 };

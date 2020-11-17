@@ -1,6 +1,27 @@
 import IVideo from '../@types/video';
 import YouTubeAPI from '../services/youtube';
 
+interface getVideoProps {
+    videoId: string;
+}
+
+export async function getVideo({
+    videoId,
+}: getVideoProps): Promise<IVideoInfo> {
+    try {
+        const response = await YouTubeAPI.get('/videos', {
+            params: {
+                id: videoId,
+                part: 'player,snippet',
+            },
+        });
+
+        return response.data.items[0];
+    } catch (err) {
+        throw new Error(err);
+    }
+}
+
 interface getVideosFromAPlaylistProps {
     playlistId: string;
     maxResults?: number;
