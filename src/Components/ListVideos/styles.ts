@@ -14,7 +14,8 @@ export const List = styled.FlatList``;
 
 export const SeeAllVideosButton = styled(RectButton)`
     align-self: flex-end;
-    padding: 2px 15px 0 0;
+    padding: 10px;
+    margin: 0 10px 0 0;
 `;
 
 export const SeeAllVideosButtonText = styled.Text`

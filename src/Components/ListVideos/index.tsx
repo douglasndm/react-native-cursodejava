@@ -40,7 +40,7 @@ const ListVideos: React.FC<Props> = ({
         if (playlistId) {
             response = await getVideosFromAPlaylist({
                 playlistId,
-                maxResults: 5,
+                maxResults: 10,
             });
         } else if (searchContent) {
             response = await getVideosFromASearch({

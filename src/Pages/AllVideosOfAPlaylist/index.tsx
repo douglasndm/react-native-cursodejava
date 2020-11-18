@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 
 import { getVideosFromAPlaylist } from '../../Functions/videos';
@@ -21,13 +21,13 @@ const AllVideosOfAPlaylist: React.FC = () => {
     useEffect(() => {
         getVideosFromAPlaylist({
             playlistId: routeParams.playlistId,
-            maxResults: 50,
+            maxResults: 200,
         }).then(response => setVideos(response));
     }, [routeParams]);
 
     return (
         <Container>
-            <Header title="Curso inteiro" />
+            <Header title="Curso completo" />
 
             <Content>
                 <List
