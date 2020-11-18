@@ -7,7 +7,7 @@ interface Props {
     video: IVideo;
 }
 
-const VideoItem: React.FC<Props> = ({ video }: Props) => {
+const VideoItemVertical: React.FC<Props> = ({ video }: Props) => {
     const { navigate } = useNavigation();
 
     const handleNavigateToVideo = useCallback(() => {
@@ -25,4 +25,4 @@ const VideoItem: React.FC<Props> = ({ video }: Props) => {
     );
 };
 
-export default VideoItem;
+export default VideoItemVertical;

@@ -10,7 +10,7 @@ export const Container = styled(RectButton)`
 export const Background = styled.ImageBackground.attrs({
     resizeMode: 'cover',
 })`
-    width: 225px;
+    width: 393px;
     height: 225px;
 `;
 
@@ -18,7 +18,7 @@ export const TextContainer = styled.View`
     padding: 12px;
     background: #f7630c;
     max-height: 95px;
-    width: 225px;
+    width: 393px;
     position: absolute;
     bottom: 0;
 `;

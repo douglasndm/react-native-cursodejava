@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import IVideo from '../../@types/video';
-
 import {
     getVideosFromAPlaylist,
     getVideosFromASearch,

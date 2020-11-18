@@ -1,4 +1,4 @@
-export default interface IVideo {
+interface IVideo {
     id: string;
     snippet: {
         publishedAt: string;

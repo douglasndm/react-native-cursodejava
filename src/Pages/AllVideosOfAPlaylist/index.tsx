@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 
-import IVideo from '../../@types/video';
-
 import { getVideosFromAPlaylist } from '../../Functions/videos';
 
 import Header from '../../Components/Header';
 
-import { Container, List } from './styles';
-import VideoItem from '../../Components/VideoItem';
+import { Container, Content, List } from './styles';
+import VideoItemVertical from '../../Components/VideoItemVertical';
 
 interface Props {
     playlistId: string;
@@ -31,11 +29,15 @@ const AllVideosOfAPlaylist: React.FC = () => {
         <Container>
             <Header title="Curso inteiro" />
 
-            <List
-                data={videos}
-                keyExtractor={(item, index) => item.id}
-                renderItem={({ item }) => <VideoItem video={item} />}
-            />
+            <Content>
+                <List
+                    data={videos}
+                    keyExtractor={(item, index) => item.id}
+                    renderItem={({ item }) => (
+                        <VideoItemVertical video={item} />
+                    )}
+                />
+            </Content>
         </Container>
     );
 };
